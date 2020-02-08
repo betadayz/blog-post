@@ -4,15 +4,36 @@ import { fetchPosts } from '../actions'
 
 class PostList extends React.Component {
     
-    componentDidCatch() {
+    componentDidMount() {
         this.props.fetchPosts()
     }
 
+    renderList() {
+        let post = this.props.posts;
+             return  post.length === 0 ? 'Loading...' :  this.props.posts.map(post => {
+            return (
+                <div className="item" key={post.id}>
+                <i className="large middle aligned icon user" />
+                <div className="content">
+                    <div className="description">
+                        <h2>{post.title}</h2>
+                        <p>{post.body}</p>
+                    </div>
+                </div>
+
+                </div>
+            )
+        })
+    
+        
+       
+    }
+    
+
     render() {
-        console.log(this.props.posts)
         return (
-            <div>
-                Post list
+            <div className="ui relaxed divided list">
+                {this.renderList()}
             </div>
         )
     }
