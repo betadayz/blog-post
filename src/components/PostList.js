@@ -11,6 +11,7 @@ class PostList extends React.Component {
 
     renderList() {
         let post = this.props.posts;
+        console.log(this.props.posts)
              return  post.length === 0 ? 'Loading...' :  this.props.posts.map(post => {
             return (
                 <div className="item" key={post.id}>
